@@ -1,0 +1,16 @@
+.header {
+  padding: 15px 0;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.nav {
+  display: flex;
+  justify-content: space-between;
+}
+.nav h1 {
+  margin: 0;
+}
+.nav button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}

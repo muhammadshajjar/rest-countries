@@ -1,0 +1,35 @@
+.card {
+  width: 265px;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.card h2 {
+  font-size: 18px;
+  padding-top: 10px;
+  text-transform: capitalize;
+}
+.card__flag {
+  height: 164px;
+}
+.card__flag img {
+  width: 100%;
+  height: 100%;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.card__desc {
+  padding: 25px;
+}
+
+.card__desc p > span {
+  font-weight: 600;
+}
+.card__desc div {
+  padding: 25px 0;
+}
+
+.card__desc p:nth-child(even) {
+  padding: 5px 0;
+}

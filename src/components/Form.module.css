@@ -1,0 +1,35 @@
+.form {
+  display: flex;
+  justify-content: space-between;
+  padding: 50px 0;
+}
+.search {
+  width: 28%;
+  position: relative;
+}
+
+.search input::placeholder {
+  font-size: 15px;
+  color: var(--Dark-Gray);
+}
+.search span {
+  position: absolute;
+  top: 0;
+  transform: translate(100%, 100%);
+  margin-left: 15px;
+}
+input,
+select {
+  border: none;
+  border-radius: 5px;
+}
+.search input {
+  width: 100%;
+  padding: 22px 40px 16px 66px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.filter select {
+  padding: 22px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
