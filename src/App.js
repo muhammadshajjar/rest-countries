@@ -4,82 +4,32 @@ import "./App.css";
 import Form from "./components/Form";
 import Country from "./components/Country";
 import Detail from "./components/Detail";
+import useHttp from "./hooks/use-http";
 
 const App = () => {
-  const [countries, setCountries] = useState([]);
   const [specifcCountry, setSpecificCountry] = useState([]);
   const [isShow, setIsShow] = useState(false);
   const [search, setSearch] = useState([]);
   const [error, setError] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
 
-  const fetchCountriesDataHandler = async () => {
-    setIsLoading(true);
-
-    try {
-      const response = await fetch("https://restcountries.com/v3.1/all");
-      console.log(response);
-
-      if (!response.ok) throw new Error("Error in loading data");
-
-      const data = await response.json();
-
-      const transfromedData = data.map((country, i) => {
-        return {
-          id: i,
-          name: country.name.common.toLowerCase(),
-          population: new Intl.NumberFormat().format(country.population),
-          region: country.region,
-          subRegion: country.subregion,
-          capital: country.capital,
-          flag: country.flags.png,
-          toplevelDomain: country.tld,
-          languages: Object.values(country.languages || []),
-          currency: Object.keys(country.currencies || []),
-          borders: country.borders || false,
-          nativeName: Object.values(country.name.nativeName || [])[0]?.common,
-        };
-      });
-      setCountries(transfromedData);
-    } catch (err) {
-      console.log(err.message || "Something went wrong!");
-    }
-    setIsLoading(false);
-  };
+  const {
+    isLoading,
+    countries,
+    fetchCountriesData: fetchCountriesDataHandler,
+  } = useHttp();
 
   useEffect(() => {
-    console.log("runs");
-    fetchCountriesDataHandler();
+    fetchCountriesDataHandler("https://restcountries.com/v3.1/all");
   }, []);
 
   const filterByRegionHandler = async (region) => {
-    const response = await fetch(
+    fetchCountriesDataHandler(
       `${`https://restcountries.com/v3.1/region/${region}`}`
     );
-    const data = await response.json();
-
-    const transfromedData = data.map((country, i) => {
-      return {
-        id: i,
-        name: country.name.common.toLowerCase(),
-        population: new Intl.NumberFormat().format(country.population),
-        region: country.region,
-        subRegion: country.subregion,
-        capital: country.capital,
-        flag: country.flags.png,
-        toplevelDomain: country.tld,
-        languages: Object.values(country.languages || []),
-        currency: Object.keys(country.currencies || []),
-        borders: country.borders || false,
-        nativeName: Object.values(country.name.nativeName || [])[0]?.common,
-      };
-    });
-    setCountries(transfromedData);
   };
 
   const searchCountryHandler = (name) => {
     setError(false);
-
     const searchCountries = countries.filter((c) => {
       return c.name.startsWith(name.toLowerCase());
     });
@@ -130,6 +80,7 @@ const App = () => {
             {search.length === 0 && countriesData}
           </ul>
         )}
+
         {isShow && (
           <Detail
             onBack={onBackHandler}

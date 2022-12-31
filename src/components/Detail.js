@@ -44,7 +44,7 @@ const Detail = (props) => {
               </p>
               <p>
                 <span>Capital: </span>
-                {country.capital}
+                {country.capital?.join(", ")}
               </p>
             </div>
             <div className={classes[`desc__list--right`]}>

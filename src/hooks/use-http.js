@@ -9,11 +9,11 @@ const useHttp = () => {
 
     try {
       const response = await fetch(url);
-      console.log(response);
 
       if (!response.ok) throw new Error("Error in loading data");
 
       const data = await response.json();
+      console.log(data);
 
       const transfromedData = data.map((country, i) => {
         return {
