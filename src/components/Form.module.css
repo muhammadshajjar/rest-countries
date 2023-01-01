@@ -12,6 +12,10 @@
   font-size: 15px;
   color: var(--Dark-Gray);
 }
+
+.dark .search input {
+  color: white;
+}
 .search span {
   position: absolute;
   top: 0;
@@ -32,4 +36,14 @@ select {
 .filter select {
   padding: 22px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.dark .filter select {
+  background-color: var(--Blueish-dark-bg);
+  color: white;
+}
+
+.dark .search input,
+.dark .filter select {
+  background-color: var(--Blueish-dark-bg);
+  box-shadow: none;
 }

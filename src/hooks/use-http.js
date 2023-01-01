@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 
 const useHttp = () => {
   const [countries, setCountries] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchCountriesData = async (url) => {
+  const fetchCountriesData = useCallback(async (url) => {
     setIsLoading(true);
 
     try {
@@ -13,7 +13,6 @@ const useHttp = () => {
       if (!response.ok) throw new Error("Error in loading data");
 
       const data = await response.json();
-      console.log(data);
 
       const transfromedData = data.map((country, i) => {
         return {
@@ -36,7 +35,7 @@ const useHttp = () => {
       console.log(err.message || "Something went wrong!");
     }
     setIsLoading(false);
-  };
+  }, []);
 
   return { isLoading, countries, fetchCountriesData };
 };

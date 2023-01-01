@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import classes from "./Form.module.css";
 import { IoSearchOutline } from "react-icons/io5";
+import ThemeContext from "../store/theme-context";
 
 const Form = (props) => {
   const [countryName, setCountryName] = useState("");
+
+  const { theme } = useContext(ThemeContext);
+
   const filterHandler = (e) => {
     props.onFilterData(e.target.value);
   };
@@ -17,7 +21,7 @@ const Form = (props) => {
     setCountryName("");
   };
   return (
-    <section className={classes.form + " container"}>
+    <section className={classes.form + " container " + `${classes[theme]}`}>
       <form className={classes.search} onSubmit={submitSearchHandler}>
         <input
           type="text"

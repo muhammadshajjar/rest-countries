@@ -11,6 +11,8 @@
   --Very-Dark-Blue: hsl(200, 15%, 8%);
   --Very-Light-Gray: hsl(0, 0%, 98%);
   --Dark-Gray: hsl(0, 0%, 52%);
+  --Blueish-dark-bg: rgb(43, 55, 67);
+  --Blackish-dark-bg-container: rgb(32, 45, 54);
 }
 body {
   font-family: "Nunito Sans", sans-serif;

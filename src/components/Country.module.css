@@ -5,6 +5,10 @@
   cursor: pointer;
   border-radius: 5px;
 }
+.card.dark {
+  background-color: var(--Blueish-dark-bg);
+  box-shadow: none;
+}
 .card h2 {
   font-size: 18px;
   padding-top: 10px;

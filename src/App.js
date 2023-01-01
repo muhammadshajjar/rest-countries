@@ -1,16 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navigation from "./components/Navigation";
 import "./App.css";
 import Form from "./components/Form";
 import Country from "./components/Country";
 import Detail from "./components/Detail";
 import useHttp from "./hooks/use-http";
+import ThemeContext from "./store/theme-context";
 
 const App = () => {
   const [specifcCountry, setSpecificCountry] = useState([]);
   const [isShow, setIsShow] = useState(false);
   const [search, setSearch] = useState([]);
   const [error, setError] = useState(false);
+
+  const { theme } = useContext(ThemeContext);
 
   const {
     isLoading,
@@ -20,7 +23,7 @@ const App = () => {
 
   useEffect(() => {
     fetchCountriesDataHandler("https://restcountries.com/v3.1/all");
-  }, []);
+  }, [fetchCountriesDataHandler]);
 
   const filterByRegionHandler = async (region) => {
     fetchCountriesDataHandler(
@@ -37,7 +40,6 @@ const App = () => {
     console.log(searchCountries.length);
 
     if (searchCountries.length === 0) {
-      console.log("here");
       setError(true);
     }
     setSearch(searchCountries);
@@ -62,13 +64,12 @@ const App = () => {
   };
 
   return (
-    <div className="app">
+    <div className={`app ${theme}`}>
       <Navigation />
       <main className="main">
         {!isShow && (
           <Form
             onFilterData={filterByRegionHandler}
-            onSearch={searchCountryHandler}
             onSearchCountry={searchCountryHandler}
           />
         )}

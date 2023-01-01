@@ -1,7 +1,7 @@
 .detail {
   height: 90vh;
-  background-color: var(--Very-Light-Gray);
 }
+
 .detail__btn {
   padding: 60px 0;
 }
@@ -16,6 +16,10 @@
   border-radius: 5px;
   cursor: pointer;
   letter-spacing: 0.7px;
+}
+.dark .detail__btn button {
+  color: white;
+  background-color: var(--Blueish-dark-bg);
 }
 .detail__desc {
   display: flex;
@@ -55,6 +59,12 @@
   font-weight: 600;
   color: black;
 }
+.dark .desc__list p {
+  color: var(--Dark-Gray);
+}
+.dark .desc__list p > span {
+  color: white;
+}
 .desc__list p {
   padding-top: 6px;
 }
@@ -73,4 +83,8 @@
   padding: 6px 24px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 5px;
+}
+
+.dark .detail__borders ul li {
+  background-color: var(--Blueish-dark-bg);
 }

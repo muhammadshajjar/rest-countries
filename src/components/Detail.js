@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Detail.module.css";
 import { IoArrowBackSharp } from "react-icons/io5";
+import ThemeContext from "../store/theme-context";
 
 const Detail = (props) => {
   const country = props.data[0];
+
+  const { theme } = useContext(ThemeContext);
 
   let borders = country.borders ? (
     country.borders.map((name) => <li>{name}</li>)
@@ -12,7 +15,7 @@ const Detail = (props) => {
   );
 
   return (
-    <section className={classes.detail + " container"}>
+    <section className={classes.detail + " container " + `${classes[theme]}`}>
       <div className={classes.detail__btn}>
         <button onClick={() => props.onBack()}>
           <IoArrowBackSharp />

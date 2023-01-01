@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
+import ThemeContext from "../store/theme-context";
 import classes from "./Country.module.css";
 
 const Country = (props) => {
+  const { theme } = useContext(ThemeContext);
   const country = props.country;
   return (
-    <li className={classes.card} onClick={() => props.onClickCard(country.id)}>
+    <li
+      className={`${classes.card} ${classes[theme]}`}
+      onClick={() => props.onClickCard(country.id)}
+    >
       <div className={classes.card__flag}>
         <img src={country.flag} alt={`${country.name} flag`} />
       </div>
