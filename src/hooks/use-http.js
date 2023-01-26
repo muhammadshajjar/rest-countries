@@ -14,6 +14,8 @@ const useHttp = () => {
 
       const data = await response.json();
 
+      console.log(data);
+
       const transfromedData = data.map((country, i) => {
         return {
           id: i,

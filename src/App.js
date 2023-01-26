@@ -7,6 +7,8 @@ import Detail from "./components/Detail";
 import useHttp from "./hooks/use-http";
 import ThemeContext from "./store/theme-context";
 
+import { FallingLines } from "react-loader-spinner";
+
 const App = () => {
   const [specifcCountry, setSpecificCountry] = useState([]);
   const [isShow, setIsShow] = useState(false);
@@ -74,7 +76,16 @@ const App = () => {
           />
         )}
         {error && <p className="container error">No search result found!</p>}
-        {isLoading && <p>Loading....</p>}
+        {isLoading && (
+          <div className="loading">
+            <FallingLines
+              color="#4fa94d"
+              width="80"
+              visible={true}
+              ariaLabel="falling-lines-loading"
+            />
+          </div>
+        )}
         {!isShow && (
           <ul className="countries container">
             {search.length > 0 && serachResult}
